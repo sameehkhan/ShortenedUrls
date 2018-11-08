@@ -23,12 +23,12 @@ primary_key: :id,
 foreign_key: :user_id,
 class_name: :User 
 
-belongs_to :visted_urls,
+belongs_to :visited_urls,
 primary_key: :id,
 foreign_key: :short_url_id,
 class_name: :ShortenedUrl
 
-
+ 
 
 
 
