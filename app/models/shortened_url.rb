@@ -26,12 +26,30 @@ class ShortenedUrl < ApplicationRecord
   end 
   
   
+  def num_clicks
+    self.visited_urls.count 
+  end 
+  
+  def num_uniques
+    arr = []
+    self.visited_urls.each do |visit|
+      arr << visit[:user_id]
+    end 
+    arr.uniq.count
+  end 
+  
+  def num_recent_uniques
+    
+  end 
+  
+  
+  
   belongs_to :submitter,
   primary_key: :id,
   foreign_key: :user_id,
   class_name: :User
   
-  has_many :visted_urls,
+  has_many :visited_urls,
   primary_key: :id,
   foreign_key: :short_url_id,
   class_name: :Visit

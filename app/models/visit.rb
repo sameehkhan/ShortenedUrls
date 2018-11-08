@@ -18,6 +18,7 @@ class Visit < ApplicationRecord
   end 
 
 
+  
 belongs_to :visitors,
 primary_key: :id, 
 foreign_key: :user_id,
