@@ -21,7 +21,8 @@ class ShortenedUrl < ApplicationRecord
   
   
   def self.create_code(user,long_url)
-    ShortenedUrl.random_code
+    code = ShortenedUrl.random_code
+    ShortenedUrl.create(short_url: code, user_id: user.id)
   end 
   
   
@@ -29,6 +30,12 @@ class ShortenedUrl < ApplicationRecord
   primary_key: :id,
   foreign_key: :user_id,
   class_name: :User
+  
+  has_many :visted_urls,
+  primary_key: :id,
+  foreign_key: :short_url_id,
+  class_name: :Visit
+  
   
   # entry = ShortenedUrl.create(short_url: ShortenedUrl.create_code(s, "twitter.com"), user_id: s.id)
   
